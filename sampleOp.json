@@ -1,0 +1,110 @@
+{
+    "status": "ok",
+    "totalResults": 8,
+    "articles": [
+      {
+        "source": {
+          "id": "fortune",
+          "name": "Fortune"
+        },
+        "author": "Barbara Humpton, Mark A. Weinberger",
+        "title": "The infrastructure bill is vital to America’s economic future",
+        "description": "Bipartisan action now would reverse decades of underinvestment and make our economy more competitive, more inclusive, and more resilient.",
+        "url": "https://fortune.com/2021/08/25/infrastructure-bill-us-economy-jobs-inclusion-green-energy/",
+        "urlToImage": "https://content.fortune.com/wp-content/uploads/2021/08/GettyImages-1233981610-e1629893815443.jpg?resize=1200,600",
+        "publishedAt": "2021-08-25T23:00:00Z",
+        "content": "Skip to Content"
+      },
+      {
+        "source": {
+          "id": "politico",
+          "name": "Politico"
+        },
+        "author": "Associated Press",
+        "title": "U.S. jobless claims near pandemic low as economy strengthens",
+        "description": "Thursday's report from the Labor Department showed that jobless claims fell to 375,000 from 387,000 the previous week.",
+        "url": "https://www.politico.com/news/2021/08/12/jobless-claims-pandemic-economy-504145",
+        "urlToImage": "https://static.politico.com/48/71/3e0ef9fa4e1983a1f19aaa036cae/210812-help-wanted-ap-773.jpg",
+        "publishedAt": "2021-08-12T13:21:14+00:00",
+        "content": "Those complications help explain why the pace of applications remains comparatively high. Before the pandemic paralyzed the economy in March 2020, unemployment applications were running at about 220,… [+2171 chars]"
+      },
+      {
+        "source": {
+          "id": "politico",
+          "name": "Politico"
+        },
+        "author": "Associated Press",
+        "title": "U.S. economy surpasses prepandemic size with 6.5% Q2 growth",
+        "description": "The growth is another sign that the nation has achieved a sustained recovery from the pandemic recession.",
+        "url": "https://www.politico.com/news/2021/07/29/us-economy-accelerated-65-percent-501510",
+        "urlToImage": "https://static.politico.com/38/3a/8a02e4d84d57aa01a2474862c2c8/210729-dollar-bills-getty-773.jpg",
+        "publishedAt": "2021-07-29T12:54:23+00:00",
+        "content": "By contrast, consumer spending the main fuel of the U.S. economy was robust last quarter: It advanced at an 11.8% annual rate. Spending on goods grew at an 11.6% rate, though down from a 27.4% surge … [+4334 chars]"
+      },
+      {
+        "source": {
+          "id": "politico",
+          "name": "Politico"
+        },
+        "author": "Megan Cassella, Ben White",
+        "title": "Virus resurgence menaces economy just as rescue programs unravel",
+        "description": "A new wave of cases followed by the looming expiration of enhanced jobless benefits, a ban on evictions and other rescue programs is sparking concern among lawmakers and economists.",
+        "url": "https://www.politico.com/news/2021/07/24/covid-delta-economy-benefits-evictions-expiration-500701",
+        "urlToImage": "https://static.politico.com/b0/9e/2b79378f421aae4f60ba19ff8ef6/gettyimages-1256539632-1.jpg",
+        "publishedAt": "2021-07-24T11:00:06+00:00",
+        "content": "Biden whose Gallup approval rating dropped to 50 percent this week, its lowest yet is already drawing attacks from Republicans over the issue. Rep. Kevin Brady of Texas, the top GOP tax writer in Con… [+6382 chars]"
+      },
+      {
+        "source": {
+          "id": "politico",
+          "name": "Politico"
+        },
+        "author": "Megan Cassella",
+        "title": "The pandemic drove women out of the workforce. Will they come back?",
+        "description": "Their absence could hurt the broader U.S. economy, so policymakers are weighing ways to help them return to work.",
+        "url": "https://www.politico.com/news/2021/07/22/coronavirus-pandemic-women-workforce-500329",
+        "urlToImage": "https://static.politico.com/29/dd/135f24074a779d52e27b7994f69a/ledecasella.jpg",
+        "publishedAt": "2021-07-22T08:30:31+00:00",
+        "content": "For Haley Stomp, a 46-year-old in Des Moines, Iowa, the coronavirus toppled the elaborate balancing act she and her husband had set up to take care of their two boys. After spending hours last fall l… [+3577 chars]"
+      },
+      {
+        "source": {
+          "id": "financial-post",
+          "name": "Financial Post"
+        },
+        "author": "Financial Post",
+        "title": "Business Essentials",
+        "description": "Stay up-to-date with the latest business trends and information on the Canadian economy, stock market and personal finance. Learn to save money, invest in the market, grow your wealth and advance your career with new skills.",
+        "url": "https://financialpost.com/category/personal-finance/business-essentials/",
+        "urlToImage": null,
+        "publishedAt": "2021-06-17T14:07:25.0207537Z",
+        "content": "365 Bloor Street East, Toronto, Ontario, M4W 3L4\r\n © 2021 Financial Post, a division of Postmedia Network Inc. All rights reserved. Unauthorized distribution, transmission or republication strictly p… [+9 chars]"
+      },
+      {
+        "source": {
+          "id": "financial-post",
+          "name": "Financial Post"
+        },
+        "author": "Financial Post",
+        "title": "Home - The Logic",
+        "description": "In-depth reporting on the innovation economy.",
+        "url": "https://thelogic.co/",
+        "urlToImage": "https://thelogic.co/wp-content/uploads/2018/09/WP_Logo.jpg",
+        "publishedAt": "2021-01-13T03:22:20.3109813Z",
+        "content": "In a conference call with The Logic hosted by the Canadian Club on Tuesday, the longtime CEO discussed how his industry is under threat from Silicon Valley and how the company plans to develop its ow… [+322 chars]"
+      },
+      {
+        "source": {
+          "id": "financial-post",
+          "name": "Financial Post"
+        },
+        "author": "Financial Post",
+        "title": "Economy",
+        "description": "Latest news on the economic system, inflation, gross domestic product (GDP), national debts and financial news, as well as coverage for health care, the sector plus more.",
+        "url": "http://business.financialpost.com/category/news/economy/",
+        "urlToImage": null,
+        "publishedAt": "2020-07-09T18:37:29.9201238Z",
+        "content": "Visit the Postmedia Brands page\r\n365 Bloor Street East, Toronto, Ontario, M4W 3L4\r\n© 2020 Financial Post, a division of Postmedia Network Inc. All rights reserved. Unauthorized distribution, transmis… [+41 chars]"
+      }
+    ]
+  }
