@@ -8,7 +8,7 @@ export default class News extends Component {
     static defaultProps = {
        country : 'in',
        pageSize : 12,
-       category : 'science'
+       category : 'general'
     };
 
     static propTypes = {
@@ -17,14 +17,24 @@ export default class News extends Component {
         category: PropTypes.string
     };
 
-    constructor(){
-        super();
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    capitalizeAllLetter(string) {
+        return string.toUpperCase();
+    }
+
+    constructor(props){
+        super(props);
         
         this.state ={
             articles : [],
             loading : false,
             page : 1
         }
+
+        document.title = `NewsCard | ${this.capitalizeFirstLetter(this.props.category)}`;
     }
 
     // handeling state of first page, content of first page (articles) and loading gif 
@@ -84,10 +94,11 @@ export default class News extends Component {
 
     render() {
         return (
-            <div className="container my-3" style={{textAlign: 'center'}}>
+            <div className="container my-3" >
                 
-                <h1 style={{color: '#0071FF'}}>TOP BULLETIN</h1>
-
+                <h1 style={{color: '#0071FF', textAlign: 'center'}}> {this.props.category === "general" ? "TOP BULLETINS":`TOP ${this.capitalizeAllLetter(this.props.category)} HEADLINES`}</h1>
+                
+                {/* Navigation Indicators */}
                 <div className="container d-flex justify-content-between"> 
                     <button disabled={this.state.page <= 1} onClick={this.handlePreviousClick} className="btn btn-default" style={{fontSize:'40px'}} > &laquo; </button>   
                     <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)} onClick={this.handleNextClick} className="btn btn-default" style={{fontSize:'40px'}} > &raquo; </button>     
@@ -101,7 +112,9 @@ export default class News extends Component {
                         {this.state.articles.map((element)=>{
                             return(
                                 <div className="col-md-3 my-3" key={element.url}>
-                                    <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : ""} imgUrl={element.urlToImage? element.urlToImage : "https://www.pewtrusts.org/-/media/post-launch-images/2020/09/sln_sept8_1/16x9_m.jpg?h=1024&w=1820&la=en&hash=7923EE14DBA15FFEABF4A3757E18E3D6"} newsUrl={element.url}/>
+
+                                    <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : element.content} imgUrl={element.urlToImage ? element.urlToImage : "https://www.pewtrusts.org/-/media/post-launch-images/2020/09/sln_sept8_1/16x9_m.jpg?h=1024&w=1820&la=en&hash=7923EE14DBA15FFEABF4A3757E18E3D6"} newsUrl={element.url} newsDate={element.publishedAt} author={element.author ? element.author : "Unknown Source"} source={element.source.name}/>
+
                                 </div>
                             )
                         })}
@@ -109,10 +122,14 @@ export default class News extends Component {
                    
                 }
                 
-                <div className="container d-flex justify-content-around"> 
-                    <button disabled={this.state.page <= 1} onClick={this.handlePreviousClick} className="btn btn-primary" > &laquo; Previous </button>  
-                    <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)} onClick={this.handleNextClick} className="btn btn-primary" > Next &raquo; </button>     
-                </div>
+                {/* Button for navigation */}
+                { this.state.loading === true ? "" : 
+                    <div className="container d-flex justify-content-around"> 
+                        <button disabled={this.state.page <= 1} onClick={this.handlePreviousClick} className="btn btn-primary" > &laquo; Previous </button>  
+                        <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)} onClick={this.handleNextClick} className="btn btn-primary" > Next &raquo; </button>     
+                     </div>
+                }
+                
                            
             </div>
         )
