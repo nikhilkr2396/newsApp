@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import NewsItem from './NewsItem'
 import Spinner from './Spinner'
 import PropTypes from 'prop-types'
-
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default class News extends Component {
     static defaultProps = {
@@ -30,8 +30,9 @@ export default class News extends Component {
         
         this.state ={
             articles : [],
-            loading : false,
-            page : 1
+            loading : true,
+            page : 1,
+            totalResults : 0
         }
 
         document.title = `NewsCard | ${this.capitalizeFirstLetter(this.props.category)}`;
@@ -39,9 +40,7 @@ export default class News extends Component {
 
     // handeling state of first page, content of first page (articles) and loading gif 
     async componentDidMount() {
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3c1a16e89e5b422b892acd58fe19e001&page=1&pageSize=${this.props.pageSize}`
-
-        this.setState({loading: true});
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a6538f20845644668e820952f9435acc&page=1&pageSize=${this.props.pageSize}`
 
         let data = await fetch(url);
         let parseData = await data.json();
@@ -53,85 +52,49 @@ export default class News extends Component {
          
       }
 
-    // handeling state of previous page, content of previous page (articles) and loading gif
-    handlePreviousClick = async () => {
+    fetchMoreData = async () =>{
         
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3c1a16e89e5b422b892acd58fe19e001&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`
+        this.setState({page : this.state.page + 1});
+
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a6538f20845644668e820952f9435acc&page=${this.state.page}&pageSize=${this.props.pageSize}`
 
         this.setState({loading: true});
-        
+
         let data = await fetch(url);
         let parseData = await data.json();
 
         this.setState({ 
-            articles : parseData.articles ,
-            page : this.state.page - 1,
+            articles : this.state.articles.concat(parseData.articles) , 
+            totalResults : parseData.totalResults,
             loading : false
         });
-    }  
-
-    // handeling state of next page, content of next page (articles) and loading gif
-    handleNextClick = async () => {
-       if(this.state.page + 1 <= Math.ceil(this.state.totalResults / this.props.pageSize)){
-           
-            let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3c1a16e89e5b422b892acd58fe19e001&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`
-
-            this.setState({loading: true});
-
-            let data = await fetch(url);
-            let parseData = await data.json();
-
-            this.setState({ 
-                articles : parseData.articles ,
-                page : this.state.page + 1,
-                loading : false
-            });
-       }    
-      
-
     }
-
 
     render() {
         return (
-            <div className="container my-3" >
-                
-                <h1 style={{color: '#0071FF', textAlign: 'center'}}> {this.props.category === "general" ? "TOP BULLETINS":`TOP ${this.capitalizeAllLetter(this.props.category)} HEADLINES`}</h1>
-                
-                {/* Navigation Indicators */}
-                <div className="container d-flex justify-content-between"> 
-                    <button disabled={this.state.page <= 1} onClick={this.handlePreviousClick} className="btn btn-default" style={{fontSize:'40px'}} > &laquo; </button>   
-                    <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)} onClick={this.handleNextClick} className="btn btn-default" style={{fontSize:'40px'}} > &raquo; </button>     
-                </div>
-                        
-                
-                {/* if loading is true then we need to show the spinner gif else we have to show the articles */}
-                {this.state.loading === true ? <Spinner /> : 
-                   
-                    <div className="row">
-                        {this.state.articles.map((element)=>{
-                            return(
-                                <div className="col-md-3 my-3" key={element.url}>
+            <>
+                <h1 className="my-3" style={{color: '#0071FF', textAlign: 'center'}}> {this.props.category === "general" ? "TOP BULLETINS":`TOP ${this.capitalizeAllLetter(this.props.category)} HEADLINES`}</h1>
+                                     
+                {this.state.loading === 'true' ? <Spinner/> : 
+                <InfiniteScroll  dataLength={this.state.articles.length}  next={this.fetchMoreData}  hasMore={this.state.articles.length !== this.state.totalResults}  loader={<Spinner />} >
 
-                                    <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : element.content} imgUrl={element.urlToImage ? element.urlToImage : "https://www.pewtrusts.org/-/media/post-launch-images/2020/09/sln_sept8_1/16x9_m.jpg?h=1024&w=1820&la=en&hash=7923EE14DBA15FFEABF4A3757E18E3D6"} newsUrl={element.url} newsDate={element.publishedAt} author={element.author ? element.author : "Unknown Source"} source={element.source.name}/>
+                    <div className="container my-3" >
+                        <div className="row">
+                            {this.state.articles.map((element)=>{
+                                return(
+                                    <div className="col-md-3 my-3" key={element.url}>
 
-                                </div>
-                            )
-                        })}
+                                        <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : element.content} imgUrl={element.urlToImage ? element.urlToImage : "https://media.istockphoto.com/photos/blank-daily-newspaper-picture-id503149471?k=20&m=503149471&s=612x612&w=0&h=vVY5HcbK_-OYJqTsNjZAHFCxil6jaQMVLaypgN_uWDk="} newsUrl={element.url} newsDate={element.publishedAt} author={element.author ? element.author : "Unknown Source"} source={element.source.name}/>
+
+                                    </div>
+                                )
+                            })}
+                        </div>  
                     </div>
-                   
+
+                </InfiniteScroll>  
                 }
-                
-                {/* Button for navigation */}
-                { this.state.loading === true ? "" : 
-                    <div className="container d-flex justify-content-around"> 
-                        <button disabled={this.state.page <= 1} onClick={this.handlePreviousClick} className="btn btn-primary" > &laquo; Previous </button>  
-                        <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)} onClick={this.handleNextClick} className="btn btn-primary" > Next &raquo; </button>     
-                     </div>
-                }
-                
-                           
-            </div>
+            </>
         )
     }
 }

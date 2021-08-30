@@ -11,7 +11,7 @@ export class NewsItem extends Component {
                 
                 <div className="card">
                 <span className="position-absolute  translate-middle badge rounded-pill" style={{color:'#ADEFD1FF', left:'88%', zIndex: 1, backgroundColor:'#101820FF',}}>  {source}  </span>
-                <img src={imgUrl} className="card-img-top" alt="..."/>
+                <a href={newsUrl} target="_blank" rel="noreferrer" > <img src={imgUrl} className="card-img-top"/> </a>
                 <div className="card-body">
                     
                     <h5 className="card-title">{title}</h5>
