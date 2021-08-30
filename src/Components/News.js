@@ -44,7 +44,7 @@ export default class News extends Component {
     async componentDidMount() {
         this.props.setProgress(0);
 
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a6538f20845644668e820952f9435acc&page=1&pageSize=${this.props.pageSize}`
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=1&pageSize=${this.props.pageSize}`
 
         this.props.setProgress(25);
 
