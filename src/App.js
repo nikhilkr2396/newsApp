@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import Navbar from './Components/Navbar'
 import News from './Components/News'
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  HashRouter
 } from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar'
  
@@ -24,7 +25,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Router>
+        <HashRouter>
           
         <LoadingBar color='#cf352e'  progress={this.state.progress}  height = {3} />
 
@@ -64,7 +65,7 @@ export default class App extends Component {
             </Route>
 
         </Switch>
-        </Router>
+        </HashRouter>
       </div>
     )
   }

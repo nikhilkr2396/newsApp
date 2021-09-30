@@ -7,7 +7,7 @@ export default class Navbar extends Component {
         return (
             
             <div>
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
                     <div className="container-fluid">
                                                 
                         <Link className="navbar-brand" aria-current="page" to="/"><img src="https://img.icons8.com/fluency/50/000000/newspaper-.png"/>  News Card</Link>

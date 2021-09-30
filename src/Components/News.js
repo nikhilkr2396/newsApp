@@ -68,7 +68,7 @@ export default class News extends Component {
         
         this.setState({page : this.state.page + 1});
 
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a6538f20845644668e820952f9435acc&page=${this.state.page}&pageSize=${this.props.pageSize}`
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`
 
         this.setState({loading: true});
 
@@ -85,7 +85,7 @@ export default class News extends Component {
     render() {
         return (
             <>
-                <h1 className="my-3" style={{color: '#f11946', textAlign: 'center'}}> {this.props.category === "general" ? "TOP BULLETINS":`TOP ${this.capitalizeAllLetter(this.props.category)} HEADLINES`}</h1>
+                <h1  style={{color: '#f11946', textAlign: 'center', marginTop:"90px"}}> {this.props.category === "general" ? "TOP BULLETINS":`TOP ${this.capitalizeAllLetter(this.props.category)} HEADLINES`}</h1>
                                      
                 {this.state.loading === 'true' ? <Spinner/> : 
                 <InfiniteScroll  dataLength={this.state.articles.length}  next={this.fetchMoreData}  hasMore={this.state.articles.length !== this.state.totalResults}  loader={<Spinner />} >
